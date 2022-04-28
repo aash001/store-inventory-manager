@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+
+body {
+    background-image: url(ye-old-parchment.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div {
+    text-align: center;
+}
+
+div > img {
+    width: 30%;
+}
+
+h1, h2 {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'UnifrakturCook', cursive;
+    padding: 10px 0px 10px 0px;
+}
+
+form {
+    text-align: center;
+    font-family: 'New Rocker', cursive;
+    font-size: 20px;
+    margin: 25px auto 10px auto ;
+    width: 400px;
+    padding: 2em;
+    border: 10px solid #dcc98b;
+    border-radius: 1em;
+    background-color: #f8f4cc;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+label {
+  width: 90px;
+  text-align: left;
+}
+
+button {
+  margin-left: .5em;
+  font-family: 'New Rocker', cursive;
+  color: #000;
+  background-color: #dcc98b;
+  font-size: 25px;
+}
+
+.div-buttons {
+    display: grid;
+}
+
+.hide {
+    display: none;
+}
