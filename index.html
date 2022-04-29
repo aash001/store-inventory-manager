@@ -27,18 +27,25 @@
                 <input type="text" id="name" name="item-name" />
             </li>
             <li>
-                <label for="quality">Enter Item Quality:</label>
-                <input type="number" id="quality" name="item-quality" />
+                <label for="sell-in">Enter Sell-In Value:</label>
+                <input type="number" id="sell-in" name="sell-in" />
             </li>
             <li>
-                <label for="sell-in">Enter Sell-In Value:</label>
-                <input type="number" id="sell-in" name="sell-value" />
+                <label for="quality">Enter Item Quality:</label>
+                <input type="number" id="quality" name="item-quality" />
             </li>
             <li class="button">
                 <button type="submit" value="Submit">Add Item</button>
             </li>
         </ul>
     </form>
+    <table class="inventory-table">
+        <tr>
+            <th>Item Name</th>
+            <th>Sell-In</th>
+            <th>Quality</th>
+        </tr>
+    </table>
 
     <div class="day-buttons">
         <button id="previous">Previous Day</button>

@@ -1,5 +1,5 @@
 const inventoryDisplayTable = document.querySelector("tbody")
-const submitButton = docuemnt.querySelector(".button")
+const submitButton = document.querySelector(".button")
 const newItemForm = document.querySelector("form")
 const nextButton = document.querySelector("#next")
 const previousButton = document.querySelector("#previous")
@@ -12,24 +12,25 @@ newItemForm.addEventListener("submit", (event) => {
 
     itemInformation = {
         itemName: formData.get("item-name"),
-        itemSellIn: +formData.get("item-sell-in"),
+        itemSellIn: +formData.get("sell-in"),
         itemQuality: +formData.get("item-quality"),
-        itemCategory: getCategory(formData.get("item name"))
+        itemCategory: getCategory(formData.get("item-name"))
     }
     itemDisplayArray.push(itemInformation);
 
-    const newInventoryItem = document.createElement("tr");
-    newInventoryItem.innerHTML = `
+    const tableNewInventoryItem = document.createElement("tr");
+    tableNewInventoryItem.innerHTML = `
     <td class="item-name">${itemInformation.itemName}</td>
     <td class="item-sell-in">${itemInformation.itemSellIn}</td>
     <td>${itemInformation.itemQuality}</td>
     `
-    newInventoryItem.classList.add("custom-inventory-item");
-    inventoryDisplayTable.append(newInventoryItem);
+    tableNewInventoryItem.classList.add("custom-inventory-item");
+    inventoryDisplayTable.append(tableNewInventoryItem);
 })
 
 nextButton.addEventListener("click", () => {
-    subtractValues();
+    changeQuality();
+    subtractionValues();
 })
 
 function getCategory(itemName) {
@@ -38,17 +39,18 @@ function getCategory(itemName) {
     } else if (itemName.includes("Backstage")) {
         return "backstage"
     } else if (itemName.includes("Sulfuras")) {
-        return "sulfurus"
+        return "sulfuras"
     } else if (itemName.includes("Conjured")) {
         return "conjured"
+    } else {
+        return "none"
     }
 }
 
 function subtractionValues() {
-    let sellInValues = document.querySelectorAll("tr");
-    sellInValues.textContent = "";
+
     itemDisplayArray.forEach(object => {
-        const newInventoryItem = document.querySelector(".customer-inventory-item");
+        const newInventoryItem = document.querySelector(".custom-inventory-item");
         newInventoryItem.innerHTML = `
         <td class="item-name">${object.itemName}</td>
         <td class="item-sell-in">${(object.itemSellIn - 1)}</td>
@@ -56,5 +58,21 @@ function subtractionValues() {
         `
         object.itemSellIn--;
         inventoryDisplayTable.append(newInventoryItem)
+    })
+}
+
+function changeQuality() {
+    itemDisplayArray.forEach(object => {
+        if (object.itemCategory === "aged") {
+            object.itemQuality = object.itemQuality + 1
+        } else if (object.itemCategory === "backstage") {
+            object.itemQuality = object.itemQuality + 2
+        } else if (object.itemCategory === "sulfuras") {
+            object.itemQuality = object.itemQuality + 3
+        } else if (object.itemCategory === "conjured") {
+            object.itemQuality = object.itemQuality + 4
+        } else {
+            object.itemQuality - 1
+        }
     })
 }

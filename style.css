@@ -43,6 +43,15 @@ label {
   text-align: left;
 }
 
+.inventory-table {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border:10px solid black;
+    font-family: 'New Rocker', cursive;
+}
+
 button {
   margin-left: .5em;
   font-family: 'New Rocker', cursive;
