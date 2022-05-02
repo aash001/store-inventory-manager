@@ -95,6 +95,8 @@ function limitQuality() {
             return object.itemQuality === 50
         } else if (object.itemQuality <= 0) {
             return object.itemQuality === 0
+        } else {
+            object.itemQuality = object.itemQuality
         }
     })
 }
