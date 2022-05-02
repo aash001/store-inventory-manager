@@ -31,6 +31,7 @@ newItemForm.addEventListener("submit", (event) => {
 
 nextButton.addEventListener("click", () => {
     specialQuality();
+    limitQuality();
     sellIn();
     sellOut();
 })
@@ -84,6 +85,16 @@ function sellOut() {
             object.itemQuality = object.itemQuality - 2
         } else {
             object.itemQuality--
+        }
+    })
+}
+
+function limitQuality() {
+    itemDisplayArray.forEach(object => {
+        if (object.itemQuality >= 50) {
+            return object.itemQuality === 50
+        } else if (object.itemQuality <= 0) {
+            return object.itemQuality === 0
         }
     })
 }
