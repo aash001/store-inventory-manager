@@ -6,10 +6,10 @@ const previousButton = document.querySelector("#previous")
 
 let itemInformation = {};
 let itemDisplayArray = [];
+
 newItemForm.addEventListener("submit", (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
-
     itemInformation = {
         itemName: formData.get("item-name"),
         itemSellIn: +formData.get("sell-in"),
@@ -17,6 +17,7 @@ newItemForm.addEventListener("submit", (event) => {
         itemCategory: getCategory(formData.get("item-name"))
     }
     itemDisplayArray.push(itemInformation);
+    console.log(itemDisplayArray)
 
     const tableNewInventoryItem = document.createElement("tr");
     tableNewInventoryItem.innerHTML = `
@@ -29,9 +30,11 @@ newItemForm.addEventListener("submit", (event) => {
 })
 
 nextButton.addEventListener("click", () => {
-    changeQuality();
-    subtractionValues();
+    specialQuality();
+    sellIn();
+    sellOut();
 })
+
 
 function getCategory(itemName) {
     if (itemName.includes("Aged Brie")) {
@@ -47,8 +50,7 @@ function getCategory(itemName) {
     }
 }
 
-function subtractionValues() {
-
+function sellIn() {
     itemDisplayArray.forEach(object => {
         const newInventoryItem = document.querySelector(".custom-inventory-item");
         newInventoryItem.innerHTML = `
@@ -56,23 +58,32 @@ function subtractionValues() {
         <td class="item-sell-in">${(object.itemSellIn - 1)}</td>
         <td>${object.itemQuality}</td>
         `
+        console.log(itemDisplayArray)
         object.itemSellIn--;
         inventoryDisplayTable.append(newInventoryItem)
     })
 }
 
-function changeQuality() {
+function specialQuality() {
     itemDisplayArray.forEach(object => {
         if (object.itemCategory === "aged") {
-            object.itemQuality = object.itemQuality + 1
-        } else if (object.itemCategory === "backstage") {
-            object.itemQuality = object.itemQuality + 2
-        } else if (object.itemCategory === "sulfuras") {
             object.itemQuality = object.itemQuality + 3
+        } else if (object.itemCategory === "backstage") {
+            object.itemQuality = object.itemQuality + 1
+        } else if (object.itemCategory === "sulfuras") {
+            object.itemQuality = object.itemQuality
         } else if (object.itemCategory === "conjured") {
-            object.itemQuality = object.itemQuality + 4
+            object.itemQuality = object.itemQuality - 2
+        }
+    })
+}
+
+function sellOut() {
+    itemDisplayArray.forEach(object => {
+        if (object.itemSellIn <= 0 && object.itemCategory === "none") {
+            object.itemQuality = object.itemQuality - 2
         } else {
-            object.itemQuality - 1
+            object.itemQuality--
         }
     })
 }
