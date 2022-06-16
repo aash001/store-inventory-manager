@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
 
 body {
-    background-image: url(ye-old-parchment.jpg);
+    background-image: url(images/ye-old-parchment.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -52,12 +52,18 @@ label {
     font-family: 'New Rocker', cursive;
 }
 
+th {
+    padding: 10px;
+}
+
 button {
   margin-left: .5em;
   font-family: 'New Rocker', cursive;
   color: #000;
   background-color: #dcc98b;
   font-size: 25px;
+  cursor: pointer;
+  ;
 }
 
 .div-buttons {

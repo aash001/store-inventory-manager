@@ -17,36 +17,38 @@
     <header class="heading">
         <h1>Guilded Rose Inventory Manager</h1>
         <div class="rose">
-            <img src="blue-gold-rose.png" alt="blue rose" </div>
+            <img src="images/blue-gold-rose.png" alt="blue rose">
+        </div>
     </header>
     <h2>Add Item to Inventory</h2>
     <form>
         <ul>
             <li>
-                <label for="name">Enter Item Name:</label>
-                <input type="text" id="name" name="item-name" />
+                <label for="item-name">Enter Item Name:</label>
+                <input type="text" id="item-name" name="item-name" />
             </li>
             <li>
-                <label for="sell-in">Enter Sell-In Value:</label>
+                <label for="item-sell-in">Enter Sell-In Value:</label>
                 <input type="number" id="sell-in" name="sell-in" />
             </li>
             <li>
-                <label for="quality">Enter Item Quality:</label>
-                <input type="number" id="quality" name="item-quality" />
+                <label for="item-quality">Enter Item Quality:</label>
+                <input type="number" id="item-quality" name="item-quality" />
             </li>
             <li class="button">
                 <button type="submit" value="Submit">Add Item</button>
             </li>
         </ul>
     </form>
-    <table class="inventory-table">
-        <tr>
-            <th>Item Name</th>
-            <th>Sell-In</th>
-            <th>Quality</th>
-        </tr>
-    </table>
-
+    <div class="inventory-display-container">
+        <table class="inventory-table">
+            <tr>
+                <th>Item Name</th>
+                <th>Sell-In</th>
+                <th>Quality</th>
+            </tr>
+        </table>
+    </div>
     <div class="day-buttons">
         <button id="previous">Previous Day</button>
         <button id="next">Next Day</button>
